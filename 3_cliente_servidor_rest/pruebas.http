@@ -1,0 +1,31 @@
+### Con la extensión REST Client: pulsa "Send Request" sobre cada petición
+
+### Listar todos
+GET http://localhost:5000/api/estudiantes
+
+### Filtrar por carrera
+GET http://localhost:5000/api/estudiantes?carrera=Redes
+
+### Obtener uno
+GET http://localhost:5000/api/estudiantes/3
+
+### Crear
+POST http://localhost:5000/api/estudiantes
+Content-Type: application/json
+
+{"nombre": "Paula Reyes", "carrera": "Software", "notas": [8, 9, 7.5]}
+
+### Petición inválida (nota fuera de rango) -> 400
+POST http://localhost:5000/api/estudiantes
+Content-Type: application/json
+
+{"nombre": "Error", "carrera": "Software", "notas": [8, 15, 7]}
+
+### Reemplazar
+PUT http://localhost:5000/api/estudiantes/2
+Content-Type: application/json
+
+{"nombre": "Luis Mendoza", "carrera": "Software", "notas": [7, 7, 8]}
+
+### Eliminar
+DELETE http://localhost:5000/api/estudiantes/10

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>{{ est.nombre }}</h1>
+<p>Carrera: {{ est.carrera }} · Notas: {{ est.notas|join(", ") }} · Promedio: <b>{{ "%.2f"|format(est.promedio) }}</b></p>
+{% if error %}<p class="mal">Error: {{ error }}</p>{% endif %}
+<form method="post" action="/estudiante/{{ est.id }}/nota">
+  <label>Nota
+    <select name="numero"><option>1</option><option>2</option><option>3</option></select>
+  </label>
+  <label>Valor <input name="valor" type="number" step="0.1" min="0" max="10" required></label>
+  <button>Guardar</button>
+</form>
+{% endblock %}

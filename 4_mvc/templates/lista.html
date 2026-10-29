@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Estudiantes</h1>
+<table>
+  <tr><th>ID</th><th>Nombre</th><th>Carrera</th><th>Promedio</th><th>Estado</th></tr>
+  {% for e in estudiantes %}
+  <tr>
+    <td>{{ e.id }}</td>
+    <td><a href="/estudiante/{{ e.id }}">{{ e.nombre }}</a></td>
+    <td>{{ e.carrera }}</td>
+    <td>{{ "%.2f"|format(e.promedio) }}</td>
+    <td class="{{ 'ok' if e.aprobado else 'mal' }}">{{ "Aprobado" if e.aprobado else "Reprobado" }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% if historial %}
+<div class="aviso"><b>Cambios notificados por el modelo (Observer):</b>
+  <ul>{% for h in historial %}<li>{{ h }}</li>{% endfor %}</ul>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Estudiantes (otra vista del mismo modelo)</h1>
+<div class="tarjetas">
+  {% for e in estudiantes %}
+  <div class="tarjeta">
+    {{ e.nombre }}<br><small>{{ e.carrera }}</small>
+    <b class="{{ 'ok' if e.aprobado else 'mal' }}">{{ "%.1f"|format(e.promedio) }}</b>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
